@@ -1,0 +1,79 @@
+body{
+    background-color:white;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin:0;
+}
+/* FONT FOR H1 TITLE */
+h1{
+    font-family:RobotoCondensed-Bold;
+}
+
+/* NAVIGATION BAR */
+details.navigation ol {
+    list-style-type: square;
+    background-color: #ebecec;
+}
+
+.navigation-bar img{
+    float:left;
+    width:192px;
+    height:192px;
+}
+
+.navigation{
+    background-color: #ebecec;
+}
+
+/* HEADER FOR SIGN IN CLASS */
+.header {
+    padding: 1px;
+    text-align: center;
+    background: #041E42;
+    color: white;
+    font-size: 28px;
+}
+
+.text-padding{
+    padding: 10px;
+}
+
+/* STYLE FOR THE NAVIGATION BAR WITH LINKS */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: white;
+}
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: #041E42;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family:OpenSans-SemiBold;
+    font-size:13px;
+}
+
+li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+li a.active {
+    color: white;
+    background-color: #cecfcf;
+}
+
+/* CUSTOM FONT */
+@font-face {
+    font-family: myFirstFont;
+    src: url("../fonts/RobotoCondensed-Bold.ttf");
+}
