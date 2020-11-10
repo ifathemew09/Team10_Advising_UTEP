@@ -1,0 +1,145 @@
+body{
+    background-color:#041E42;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-weight: normal;
+}
+
+/* FONT FOR H1 TITLE */
+h1{
+    font-family:RobotoCondensed-Bold;
+}
+
+/* SIGN IN FORM */
+input[type=text], input[type=password] {
+    padding: 7px 15px;
+    margin: 10px 0;
+    display: inline-block;
+
+}
+
+/* CONTAINERS */
+.w3-container:after,.w3-container:before,.w3-panel:after,.w3-panel:before,.w3-row:after,.w3-row:before,.w3-row-padding:after,.w3-row-padding:before,
+.w3-container,.w3-panel{padding:0.01em 16px;text-align: center}.w3-panel{margin-top:16px;margin-bottom:16px;text-align: center}
+
+/*
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+*/
+
+button{
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align:center;
+    align-items: flex-start;
+    border-radius: 2px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+/* CUSTOM FONT */
+@font-face {
+    font-family: myFirstFont;
+    src: url("../fonts/RobotoCondensed-Bold.ttf");
+}
+
+/* UTEP LOG-IN */
+.loginLogo{
+    padding: 100px;
+    background-image: url("../pictures/utep_banner_image.png");
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    /*background-color: yellow;*/
+}
+
+.loginTitle{
+    font-family: "Century Gothic";
+    font-size:40px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+    overflow: hidden;
+    color: white;
+    padding: 2px;
+}
+
+
+div{
+    display: block;
+}
+
+p{
+    width: 350px;
+    padding: 15px;
+    margin: 0;
+    text-align:center;
+    color:white;
+    /* #041E42 */
+}
+
+.btn-effect{
+    background-color: #cac8c8; /* Grey */
+    border: none;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.btn-effect:hover {
+    background-color: #e2e2e2;
+    color: black;
+}
+
+
+.sub-btn{
+    background-color:white;
+    border:0 solid transparent;
+    color: black;
+    font-size:14px;
+    margin:0;
+    padding:0;
+    position:relative;
+}
+
+.sub-btn.sub-btn-medium{
+    height: 35px;
+    width: 100px;
+}
+
+.sub-btn.sub-btn-medium:hover {
+    background-color: #e2e2e2;
+    color: black;
+    cursor:pointer;
+}
