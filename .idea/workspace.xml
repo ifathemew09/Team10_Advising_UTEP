@@ -19,13 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="010b7873-71c4-447a-87ba-280b9906b612" name="Default Changelist" comment="sign-in page style changes">
-      <change afterPath="$PROJECT_DIR$/new_account.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/style_sheets/newAcct_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="010b7873-71c4-447a-87ba-280b9906b612" name="Default Changelist" comment="add sign-in and new_account page">
       <change beforePath="$PROJECT_DIR$/sign_in.php" beforeDir="false" afterPath="$PROJECT_DIR$/sign_in.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style_sheets/mainstyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/style_sheets/mainstyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style_sheets/singin_style.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +68,7 @@
       <option name="presentableId" value="Default" />
       <updated>1605030758556</updated>
       <workItem from="1605030759713" duration="13895000" />
-      <workItem from="1605131607243" duration="4091000" />
+      <workItem from="1605131607243" duration="4358000" />
     </task>
     <task id="LOCAL-00001" summary="sign-in page style changes">
       <created>1605046951283</created>
@@ -82,7 +77,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605046951283</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add sign-in and new_account page">
+      <created>1605135764006</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605135764006</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,7 +103,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="sign-in page style changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="sign-in page style changes" />
+    <MESSAGE value="add sign-in and new_account page" />
+    <option name="LAST_COMMIT_MESSAGE" value="add sign-in and new_account page" />
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1605030905489">
