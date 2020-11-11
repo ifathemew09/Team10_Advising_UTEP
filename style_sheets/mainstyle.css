@@ -6,38 +6,29 @@ body{
     font-weight: normal;
 }
 
-/* FONT FOR H1 TITLE */
-h1{
-    font-family:RobotoCondensed-Bold;
-}
 
 /* SIGN IN FORM */
 input[type=text], input[type=password] {
     padding: 7px 15px;
-    margin: 10px 0;
+    margin: 10px 10px 10px 10px;
     display: inline-block;
 
+}
+
+/* CENTER IMAGE BANNER */
+.center_img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 110px;
+    width:13%;
+    height:13%;
 }
 
 /* CONTAINERS */
 .w3-container:after,.w3-container:before,.w3-panel:after,.w3-panel:before,.w3-row:after,.w3-row:before,.w3-row-padding:after,.w3-row-padding:before,
 .w3-container,.w3-panel{padding:0.01em 16px;text-align: center}.w3-panel{margin-top:16px;margin-bottom:16px;text-align: center}
 
-/*
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
-button:hover {
-    opacity: 0.8;
-}
-*/
 
 button{
     -webkit-writing-mode: horizontal-tb !important;
@@ -64,8 +55,13 @@ button{
 
 /* CUSTOM FONT */
 @font-face {
-    font-family: myFirstFont;
+    font-family: RobotoCondensed-Bold;
     src: url("../fonts/RobotoCondensed-Bold.ttf");
+}
+
+@font-face {
+    font-family: OpenSans-Light;
+    src: url("../fonts/OpenSans-Light.ttf");
 }
 
 /* UTEP LOG-IN */
@@ -93,6 +89,12 @@ button{
 
 div{
     display: block;
+}
+
+.title-signin{
+    text-align: center;
+    color: white;
+    font-family: OpenSans-Light;
 }
 
 p{

@@ -9,11 +9,16 @@
 
     </head>
 
-    <div class="loginLogo">
+    <!--
+    <div class="loginLogo"> -->
 
+
+    <div>
+        <img src="pictures/utep_banner_transparent.png"alt="UTEP_Banner" class="center_img">
     </div>
-    <div class="loginTitle">
-        <h4>UTEP Single Sign On</h4>
+
+    <div class="title-signin">
+        <h1>UTEP Single Sign On</h1>
     </div>
 
 
