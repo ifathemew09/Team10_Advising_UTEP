@@ -19,8 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="010b7873-71c4-447a-87ba-280b9906b612" name="Default Changelist" comment="add sign-in and new_account page">
+    <list default="true" id="010b7873-71c4-447a-87ba-280b9906b612" name="Default Changelist" comment="sing_in changes">
+      <change afterPath="$PROJECT_DIR$/student_files/student.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/style_sheets/student_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database_OOP/connect_Team10AM_db.php" beforeDir="false" afterPath="$PROJECT_DIR$/Database_OOP/connect_Team10AM_db.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_files/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/advisor.php" beforeDir="false" afterPath="$PROJECT_DIR$/advisor_files/advisor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/new_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/new_account.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sign_in.php" beforeDir="false" afterPath="$PROJECT_DIR$/sign_in.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student.php" beforeDir="false" afterPath="$PROJECT_DIR$/student_files/student_profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style_sheets/mainstyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/style_sheets/mainstyle.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +58,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Team10_am" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -58,6 +67,13 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Program Files\Ampps\www\ADVISING\admin_files" />
+      <recent name="C:\Program Files\Ampps\www\ADVISING\student_files" />
+      <recent name="C:\Program Files\Ampps\www\ADVISING\advisor_files" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -68,7 +84,10 @@
       <option name="presentableId" value="Default" />
       <updated>1605030758556</updated>
       <workItem from="1605030759713" duration="13895000" />
-      <workItem from="1605131607243" duration="4358000" />
+      <workItem from="1605131607243" duration="4545000" />
+      <workItem from="1605387312731" duration="11358000" />
+      <workItem from="1605489066599" duration="6279000" />
+      <workItem from="1605635195657" duration="3276000" />
     </task>
     <task id="LOCAL-00001" summary="sign-in page style changes">
       <created>1605046951283</created>
@@ -84,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605135764006</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="sing_in changes">
+      <created>1605136014226</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605136014226</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,17 +126,19 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="sign-in page style changes" />
     <MESSAGE value="add sign-in and new_account page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add sign-in and new_account page" />
+    <MESSAGE value="sing_in changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="sing_in changes" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1605030905489">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1605637080596">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605030905489" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605637080596" />
     <state x="626" y="464" width="688" height="361" key="Github.ShareDialog" timestamp="1605035694430">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -119,14 +147,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="225" key="Github.UntrackedFilesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605035701316" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1605133644136">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1605496262800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605133644136" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605046959589">
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605496262800" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605136021578">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605046959589" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605136021578" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1605135521862">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -1,0 +1,248 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* MAIN BODY CONTAINER */
+.main-container{
+    background-color: #cdccd0;
+    height:600px;
+    width:1500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding:10px;
+}
+
+.main-container img{
+    width: 33%;
+}
+
+/* ----------- FOOTER ----------- */
+.footer-wrapper, .push{
+    padding:1em 16px;
+    background-color: #041E42;
+    color:white;
+    text-align: center;
+}
+
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+/* ----------- ROW OF CONTAINERS ----------- */
+.row{
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.quick-links{ background-color: pink; }
+
+*:before, *:after{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.col-sm-12{ width: 100%; }
+
+.col-sm-10, .col-md-12, .col-sm-4{
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.text-center{
+    text-align: center;
+    color:white;
+}
+
+.col-sm-offset-1{ margin-left: 8.33333333%; }
+
+.col-sm-10{ width: 83.33333333%; }
+
+.box-containers{
+    padding: 8px;
+    background-color: orange;
+    width: 400px;
+    height: 250px;
+    color:white;
+    text-align: center;
+    display: inline-block;
+}
+
+
+/* ------------------------------- */
+/* TRYING THIS OUT */
+.first-div {
+    width:500px;
+    height:500px;
+}
+
+.first-div img{
+    width: 100%;
+}
+
+.second-div {
+    width:500px;
+    height:500px;
+}
+.second-div img{
+    width: 100%;
+}
+
+.third-div {
+    width:500px;
+    height:500px;
+}
+.third-div img{
+    width: 100%;
+}
+
+/* ------------------------------- */
+
+.box-containers img{
+    width: 100%;
+    display: inline-block;
+}
+
+.col-sm-4{
+    width: 33.333333%;
+}
+
+
+/* ----------- ORANGE TITLE BAR ----------- */
+.title-bar{
+    background-color: #041E42;
+    color: white;
+    padding: 8px;
+    height:100%;
+}
+.big-wrapper{
+    height: 110px;
+}
+.big-wrapper img{
+    float: left;
+    height: 100%;
+}
+h1{
+    padding-left: 180px;
+    font-family: OpenSans-Light;
+}
+
+h2{
+    font-family: OpenSans-Light;
+}
+
+/* ----------- NAVIGATION BAR ----------- */
+.top-nav {
+    overflow: hidden;
+    background-color: #EBECEC;
+}
+
+.top-nav a {
+    float: right;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.top-nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.top-nav a.active {
+    background-color: #CECFCF;
+    color: black;
+}
+
+div{
+    display: block;
+}
+
+/* ------------ IMPORT FONTS ------------ */
+@font-face {
+    font-family: OpenSans-Light;
+    src: url("../fonts/OpenSans-Light.ttf");
+}
+
+/* ------------ PROFILE STYLE ------------ */
+.w3-container:after,.w3-container:before,.w3-panel:after,.w3-panel:before,.w3-row:after,
+.w3-row:before,.w3-row-padding:after,.w3-row-padding:before,
+.w3-row:after,.w3-row:before,.w3-row-padding:after,.w3-row-padding:before,
+.w3-row-padding,.w3-row-padding>.w3-half,.w3-row-padding>.w3-third,
+.w3-row-padding>.w3-twothird,.w3-row-padding>.w3-threequarter,
+.w3-row-padding>.w3-quarter,.w3-row-padding>.w3-col{padding:0 8px}
+
+.w3-col,.w3-half,.w3-third,.w3-twothird,.w3-threequarter,.w3-quarter{
+    float:left;
+    width:100%;
+}
+
+.w3-third{
+    width:33.33333%
+
+}
+
+.w3-twothird{
+    width:66.66666%
+}
+
+.w3-threequarter{
+    width:74.99999%
+}
+
+.w3-quarter{
+    width:24.99999%
+}
+
+/* ---------- SIDE PROFILE WITH INFO ---------------- */
+section {
+    width: 100%;
+}
+
+article {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    padding: 1rem;
+    text-align: left;
+    transform: translate(-50%, -50%);
+
+}
+
+/* Pattern styles */
+.container-middle {
+    display: flex;
+    height:100%;
+}
+
+.left-half {
+    flex: 3;
+    padding: 20px;
+    color: #041E42;
+    margin:0;
+}
+
+.right-half {
+    background-color: #617188;
+    flex: 1;
+    padding: 20px;
+    color: #041E42;
+    margin:0;
+}
+
+.right-half img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+

@@ -22,8 +22,8 @@ class DatabaseConnector
     {
         ////////////////////////////////////////////////
         $address = "ilinkserver.cs.utep.edu";
-        $user = "cacaiza";
-        $password = "*utep2020!";
+        $user = "rtrejo9";
+        $password = "jesusisking";
         $database = "f20am_team10";
         ////////////////////////////////////////////////
         $conn = new mysqli($address, $user, $password, $database);
