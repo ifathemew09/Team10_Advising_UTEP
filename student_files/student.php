@@ -23,6 +23,7 @@
 <div class="top-nav">
     <a href="sign_out.php">Sign out</a>
     <a href="student_schedule.php">Schedule</a>
+    <a href="student_documents.php">Documents</a>
     <a href="student_profile.php">Profile</a>
     <a class="active" href="student.php">Home</a>
 </div>

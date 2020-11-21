@@ -7,7 +7,7 @@ body {
 .main-container{
     background-color: #cdccd0;
     height:600px;
-    width:1550px;
+    width:1505px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -269,4 +269,27 @@ article {
 .btn1:hover {
     background-color: #FF8200;
     color: white;
+}
+
+/* -------- ADVISING FORM TABLE -------- */
+
+#advisingForm {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#advisingForm td, #advisingForm th {
+    border: 2px solid #041E42;
+    padding: 8px;
+}
+
+#advisingForm tr:hover {background-color: #fff;}
+
+#advisingForm th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #FF8200;
+    color: black;
 }

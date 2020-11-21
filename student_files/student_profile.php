@@ -22,6 +22,7 @@
 <div class="top-nav">
     <a href="sign_out.php">Sign out</a>
     <a href="student_schedule.php">Schedule</a>
+    <a href="student_documents.php">Documents</a>
     <a class="active" href="student_profile.php">Profile</a>
     <a href="student.php">Home</a>
 </div>
@@ -60,7 +61,7 @@
                 <img src="../pictures/profile_icon.png" />
                 <p>You can access your personal advising documents down below.</p>
 
-                <button class="btn btn1">ADVISING FORM</button>
+                <button class="btn btn1" onclick="window.location.href='student_documents.php';">ADVISING FORM</button>
                 <button class="btn btn1">DEGREE FLOWCHART</button>
                 <button class="btn btn1">REQUEST EDIT</button>
             </article>

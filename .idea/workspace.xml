@@ -19,11 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="010b7873-71c4-447a-87ba-280b9906b612" name="Default Changelist" comment="new_account is not inserting into db">
-      <change afterPath="$PROJECT_DIR$/student_files/student_schedule.php" afterDir="false" />
+    <list default="true" id="010b7873-71c4-447a-87ba-280b9906b612" name="Default Changelist" comment="created new student page">
+      <change afterPath="$PROJECT_DIR$/student_files/student_documents.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/new_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/new_account.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/student_files/student.php" beforeDir="false" afterPath="$PROJECT_DIR$/student_files/student.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/student_files/student_profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/student_files/student_profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student_files/student_schedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/student_files/student_schedule.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style_sheets/student_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style_sheets/student_style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +85,7 @@
       <workItem from="1605387312731" duration="11358000" />
       <workItem from="1605489066599" duration="6279000" />
       <workItem from="1605635195657" duration="3895000" />
-      <workItem from="1605922213249" duration="1445000" />
+      <workItem from="1605922213249" duration="4752000" />
     </task>
     <task id="LOCAL-00001" summary="sign-in page style changes">
       <created>1605046951283</created>
@@ -113,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605639177767</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="created new student page">
+      <created>1605923715931</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605923715931</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,7 +145,8 @@
     <MESSAGE value="add sign-in and new_account page" />
     <MESSAGE value="sing_in changes" />
     <MESSAGE value="new_account is not inserting into db" />
-    <option name="LAST_COMMIT_MESSAGE" value="new_account is not inserting into db" />
+    <MESSAGE value="created new student page" />
+    <option name="LAST_COMMIT_MESSAGE" value="created new student page" />
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1605637080596">
@@ -151,14 +161,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="225" key="Github.UntrackedFilesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605035701316" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1605922936643">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1605923874916">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605922936643" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605639182771">
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605923874916" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605923725858">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605639182771" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605923725858" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1605135521862">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

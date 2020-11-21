@@ -22,7 +22,7 @@ HERE;
 function _insertion_error($command, $query_error){
     print <<<HERE
 <div class="container">
-    <p>ERROR: Was not able to execute --- . </p>
+    <p>ERROR: Was not able to execute '$command'--- '$query_error' . </p>
 </div>
 HERE;
 
@@ -31,11 +31,11 @@ HERE;
 /* Clients credentials */
 
 //First Name
-$input_firstName = $cleanse->cleanInput($_POST["fName"]);
+$input_firstName = $cleanse->cleanInput($_POST["fname"]);
 //Middle Name
-$input_middleName = isset($_POST["mName"]) ? $_POST["mName"]:"N/A";
+$input_middleName = isset($_POST["mName"]) ? $_POST["mname"]:"N/A";
 //Last Name
-$input_lastName  = $cleanse->cleanInput($_POST["lName"]);
+$input_lastName  = $cleanse->cleanInput($_POST["lname"]);
 //ID
 $input_id = $cleanse->cleanInput($_POST["id"]);
 //e-mail
@@ -55,7 +55,7 @@ if( isset($submitBtn) ){
     $sql = "";
     echo "Title: " . $input_title;
     //Attempt insertion into query based on title
-    if($input_title == "admin"){
+    if( trim($input_title) == "admin"){
         $sql = "INSERT INTO admin (admin_id,first_name,middle_name,last_name,admin_password) VALUES ();";
         if( mysqli_query($conn,$sql) ){
             _insert_user($input_firstName);
@@ -65,8 +65,8 @@ if( isset($submitBtn) ){
         }
 
     }
-    else if($input_title == "advisor"){
-        $sql = "INSERT INTO admin (advisor_,first_name,middle_name,last_name,admin_password) VALUES ();";
+    else if( trim($input_title) == "advisor"){
+        $sql = "INSERT INTO advisor (advisor_,first_name,middle_name,last_name,admin_password) VALUES ();";
         if( mysqli_query($conn,$sql) ){
             _insert_user($input_firstName);
         }
@@ -74,8 +74,8 @@ if( isset($submitBtn) ){
             _insertion_error($sql, mysqli_error($conn));
         }
     }
-    else if($input_title == "admin"){
-        $sql = "INSERT INTO admin (student_id,first_name,middle_name,last_name,email_address,student_password) 
+    else if( trim($input_title) == "student"){
+        $sql = "INSERT INTO student (Sstudent_id,Sfirst_name,Smiddle_name,Slast_name,Semail,Spassword) 
 VALUES ($input_id,'$input_firstName','$input_middleName','$input_lastName','$input_email','$hashed_password');";
         if( mysqli_query($conn,$sql) ){
             _insert_user($input_firstName);
