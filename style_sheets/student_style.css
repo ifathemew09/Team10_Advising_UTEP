@@ -7,7 +7,7 @@ body {
 .main-container{
     background-color: #cdccd0;
     height:600px;
-    width:1500px;
+    width:1550px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -235,7 +235,7 @@ article {
     background-color: #617188;
     flex: 1;
     padding: 20px;
-    color: #041E42;
+    color: white;
     margin:0;
 }
 
@@ -246,3 +246,27 @@ article {
     width: 50%;
 }
 
+/* ------ BUTTONS ------- */
+.btn {
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.btn1 {
+    background-color: white;
+    color: black;
+    border: 2px solid #041E42;
+}
+
+.btn1:hover {
+    background-color: #FF8200;
+    color: white;
+}

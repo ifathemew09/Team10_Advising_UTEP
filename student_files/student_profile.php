@@ -22,7 +22,6 @@
 <div class="top-nav">
     <a href="sign_out.php">Sign out</a>
     <a href="student_schedule.php">Schedule</a>
-    <a href="student_documents.php">Documents</a>
     <a class="active" href="student_profile.php">Profile</a>
     <a href="student.php">Home</a>
 </div>
@@ -32,38 +31,26 @@
     <section class="container-middle">
         <div class="left-half">
             <article>
-                <h2>Student Information</h2>
+                <h2>STUDENT INFORMATION</h2>
                 <p>
                     <b>First Name</b>
-                    <br>Jennifer
+                    <br>first
+                </p>
+                <p>
+                    <b>Middle Name</b>
+                    <br>mid
                 </p>
                 <p>
                     <b>Last Name</b>
-                    <br>Harrison
+                    <br>last
                 </p>
                 <p>
-                    <b>Classification</b>
-                    <br>Senior
+                    <b>UTEP ID</b>
+                    <br>id
                 </p>
                 <p>
-                    <b>Program</b>
-                    <br>Fast-Track
-                </p>
-                <p>
-                    <b>Concentration</b>
-                    <br>Cyber-security
-                </p>
-                <p>
-                    <b>Overall GPA</b>
-                    <br>3.75
-                </p>
-                <p>
-                    <b>Major GPA</b>
-                    <br>3.85
-                </p>
-                <p>
-                    <b>Total Number of Credit Hours</b>
-                    <br>68
+                    <b>E-Mail</b>
+                    <br>email
                 </p>
 
             </article>
@@ -73,9 +60,9 @@
                 <img src="../pictures/profile_icon.png" />
                 <p>You can access your personal advising documents down below.</p>
 
-                <button>ADVISING FORM</button>
-                <button>DEGREE FLOWCHART</button>
-                <button>REQUEST EDIT</button>
+                <button class="btn btn1">ADVISING FORM</button>
+                <button class="btn btn1">DEGREE FLOWCHART</button>
+                <button class="btn btn1">REQUEST EDIT</button>
             </article>
         </div>
     </section>
