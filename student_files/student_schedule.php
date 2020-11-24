@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+require_once "../Database_OOP/connect_Team10AM_db.php";
+//Connect to the ilinkserver database at UTEP
+$databaseConnector = new DatabaseConnector();
+$conn = $databaseConnector->connect();
+
+if ($_SESSION["logged_in"] != true) {
+    echo("<h1>Access denied!</h1>");
+    exit();
+}
+?>
+
 <html>
 <head>
     <title>UTEP Miners Account</title>
@@ -21,7 +35,7 @@
 <!-- -------- NAVIGATION BAR -------- -->
 
 <div class="top-nav">
-    <a href="sign_out.php">Sign out</a>
+    <a href="../sign_out.php">Sign out</a>
     <a class="active" href="student_schedule.php">Schedule</a>
     <a href="student_documents.php">Documents</a>
     <a href="student_profile.php">Profile</a>

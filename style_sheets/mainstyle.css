@@ -105,6 +105,12 @@ p{
     /* #041E42 */
 }
 
+h3.error{
+    color:red;
+    text-align: center;
+    font-family: OpenSans-Light;
+}
+
 .btn-effect{
     background-color: #cac8c8; /* Grey */
     border: none;

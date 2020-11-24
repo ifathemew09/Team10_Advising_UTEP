@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+$_SESSION['error'] = 0;
 require_once "Database_OOP/connect_Team10AM_db.php";
 require_once "Database_OOP/clean_input.php";
 
@@ -44,6 +45,9 @@ $input_email  = $cleanse->cleanInput($_POST["email"]);
 $input_password  = $cleanse->cleanInput($_POST["pswd"]);
 //Faculty/Staff or Student
 $input_title  = $cleanse->cleanInput($_POST["user-title"]);
+//Student Classification
+$input_classification = $cleanse->cleanInput($_POST['s-classification']);
+
 //Hashed password using PHP Salt
 $hashed_password = password_hash('$input_password', PASSWORD_DEFAULT); //SALT AND HASH SHA256
 
@@ -53,37 +57,27 @@ $submitBtn = $_POST["submit"];
 if( isset($submitBtn) ){
     //Create variable that will hold sql commands
     $sql = "";
-    echo "Title: " . $input_title;
     //Attempt insertion into query based on title
     if( trim($input_title) == "admin"){
         $sql = "INSERT INTO admin (admin_id,first_name,middle_name,last_name,admin_password) VALUES ();";
-        if( mysqli_query($conn,$sql) ){
-            _insert_user($input_firstName);
-        }
-        else{
-            _insertion_error($sql, mysqli_error($conn));
+        if( !mysqli_query($conn,$sql) ){
+            $_SESSION['error'] = 1;
         }
 
     }
     else if( trim($input_title) == "advisor"){
         $sql = "INSERT INTO advisor (advisor_,first_name,middle_name,last_name,admin_password) VALUES ();";
-        if( mysqli_query($conn,$sql) ){
-            _insert_user($input_firstName);
-        }
-        else{
-            _insertion_error($sql, mysqli_error($conn));
-        }
-    }
-    else if( trim($input_title) == "student"){
-        $sql = "INSERT INTO student (Sstudent_id,Sfirst_name,Smiddle_name,Slast_name,Semail,Spassword) 
-VALUES ($input_id,'$input_firstName','$input_middleName','$input_lastName','$input_email','$hashed_password');";
-        if( mysqli_query($conn,$sql) ){
-            _insert_user($input_firstName);
-        }
-        else{
-            _insertion_error($sql, mysqli_error($conn));
+        if( !mysqli_query($conn,$sql) ){
+            $_SESSION['error'] = 1;
         }
 
+    }
+    else if( trim($input_title) == "student"){
+        $sql = "INSERT INTO student (Sstudent_id,Sfirst_name,Smiddle_name,Slast_name,Semail,Spassword, Sclassification) 
+VALUES ($input_id,'$input_firstName','$input_middleName','$input_lastName','$input_email','$hashed_password','$input_classification');";
+        if( !mysqli_query($conn,$sql) ){
+            $_SESSION['error'] = 1;
+        }
     }
 
     else{ echo "Something went wrong"; }
@@ -113,7 +107,7 @@ VALUES ($input_id,'$input_firstName','$input_middleName','$input_lastName','$inp
     <form action="" style="border:1px solid #ccc" method="post">
         <div class="container">
             <h1>REGISTER FACULTY/STUDENTS</h1>
-            <p>Team 10 uses this form to insert users into the system in order to store hashed passwords.</p>
+            <p>Team 10 uses this form to insert users into the system in order to store hashed passwords! </p>
             <hr>
 
             <label for="fname"><b>First Name</b></label>
@@ -134,6 +128,8 @@ VALUES ($input_id,'$input_firstName','$input_middleName','$input_lastName','$inp
             <label for="pswd"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="pswd" id="pswd" required>
 
+            <hr>
+
             <!-- SELECT IF THE PERSON IS AN ADMIN, ADVISOR, OR A STUDENT-->
             <label for="user-title"><b>Select Title</b></label>
             <select class="w3-select w3-border" name="user-title">
@@ -141,11 +137,23 @@ VALUES ($input_id,'$input_firstName','$input_middleName','$input_lastName','$inp
                 <option value="admin">ADMINISTRATOR</option>
                 <option value="advisor">ADVISOR</option>
                 <option value="student">STUDENT</option>
+            </select>
+
+            <hr>
+
+            <!-- IF A STUDENT, SELECT CLASSIFICATION -->
+            <label for="s-classification"><b>Student Classification</b></label>
+            <select class="w3-select w3-border" name="s-classification">
+                <option selected disabled>Classification</option>
+                <option value="freshman">FRESHMAN</option>
+                <option value="sophomore">SOPHOMORE</option>
+                <option value="junior">JUNIOR</option>
+                <option value="senior">SENIOR</option>
             </select> <br/>
 
             <button type="submit" name="submit">Register User</button>
-
         </div>
+        <?php if( $_SESSION['error'] == 1){ echo "<p style='color:red; float: right'>ERROR: Unable to insert into databse.</p>"; }?>
     </form>
 
 </body>

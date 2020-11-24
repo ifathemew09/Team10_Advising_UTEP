@@ -7,56 +7,70 @@ $databaseConnector = new DatabaseConnector();
 $conn = $databaseConnector->connect();
 $_SESSION['logged_in'] = false;
 $_SESSION['users_name'] = "";
+$_SESSION['error'] = 0;
+$_SESSION['user-nonexistent'] = 0;
 
 if ( !empty($_POST) ){
     if( isset($_POST['submit']) ){
         //Store Clients credentials and prevent SQL Injections
-        $input_email = isset($_POST['email']) ? $_POST['email'] : "";
-        $input_password = isset($_POST['pswd']) ? $_POST['pswd'] : "";
+        $input_email    = mysqli_real_escape_string($conn, $_POST['email']);
+        $input_password = mysqli_real_escape_string($conn, $_POST['pswd']);
 
-        // $result = mysqli_query($conn, "SELECT * FROM user WHERE username='$input_username'");
+        //SQL Commands to get information from database
+        $studentSQL = "SELECT * FROM student WHERE Semail LIKE '$input_email'";
+        $advisorSQL = "SELECT * FROM advisor WHERE ADVemail_address LIKE '$input_email'";
+        $adminSQL   = "SELECT * FROM admin WHERE Aemail_address LIKE '$input_email'";
 
-        /* ----------- SEARCH QUERIES OF DIFFERENT USERS ----------- */
-        //$searchAdmin = "SELECT COUNT(*) FROM admin WHERE ";
-        $searchStudent = "SELECT COUNT(*) FROM student WHERE email_address LIKE '$input_email' ";
-        $searchAdvisor = "SELECT COUNT(*) FROM advisor WHERE email_address LIKE '$input_email' ";
-        $searchAdmin   = "SELECT COUNT(*) FROM admin WHERE email_address LIKE '$input_email' ";
+        //SELECT the UNIQUE username found in the database
+        $studentResult = mysqli_query($conn, $studentSQL);
+        $advisorResult = mysqli_query($conn, $advisorSQL);
+        //$adminResult = mysqli_query($conn, $adminSQL);
 
-        /* ----------- QUERY RESULTS ----------- */
-        $studentResults = $conn->query($searchStudent)->fetch_array()[0];
-        $advisorResults =$conn->query($searchAdvisor)->fetch_array()[0];
-        $adminResults =$conn->query($searchAdmin)->fetch_array()[0];
+        //FETCH the array by association
+        $studentRow = mysqli_fetch_array($studentResult,MYSQLI_ASSOC);
+        $advisorRow = mysqli_fetch_array($advisorResult,MYSQLI_ASSOC);
+        //$adminRow = mysqli_fetch_array($adminResult,MYSQLI_ASSOC);
 
-        $studentRow = $studentResults->fetch_array(MYSQLI_ASSOC);
-        $advisorRow = $advisorResults->fetch_array(MYSQLI_ASSOC);
-        $adminRow = $adminResults->fetch_array(MYSQLI_ASSOC);
+        //COUNT NUM OF ROWS/results found in the query for if statement
+        $studentCount = mysqli_num_rows($studentResult);
+        $advisorCount = mysqli_num_rows($advisorResult);
+        //$adminCount = mysqli_num_rows($adminResult);
+
+
+        /* ------------------ DEBUG ------------------ */
+        echo "<br>Username: " . $input_email . "\tDatabase Username: " . $studentRow['Semail'];
+        echo "<br>Password: " . $input_password . "\tDatabase Password: " . $studentRow['Spassword'];
+        echo "<br>Password verified? " . password_verify('$input_password', $studentRow['Spassword']);
 
         // LOGIN BASED ON USERS ACCESS TYPE
-        if ($studentResults > 0 ) {
-            if( password_verify('$input_password', $studentRow['password']) ){
-                $_SESSION['user'] = strval($input_email);
+        if ($studentCount == 1 ) {
+
+            if( password_verify('$input_password', $studentRow['Spassword']) ){
+                $_SESSION['users_name'] = $studentRow['Sfirst_name'];
                 $_SESSION['logged_in'] = true;
-                $_SESSION["status"] = "student";
-                //echo"User found";
-                header("Location: student.php");
+                $_SESSION['status'] = "student";
+                $_SESSION['id'] = $studentRow['Sstudent_ID'];
+                //Student was successful in logging in
+                header("Location: student_files/student.php");
             }
             else{
-                error_reporting(0);
-                $errorMsg = "<div class='displayError'>*Password is incorrect. <br/></div>";
+                $_SESSION['error'] = 1;
             }
-        } elseif ($advisorResults > 0) {
-            if( password_verify('$input_password', $advisorRow['password']) ){
-                $_SESSION["user"] = $input_email;
-                $_SESSION["logged_in"] = true;
-                $_SESSION["status"] = "advisor";
-                //echo "Admin Found";
+        } elseif ($advisorCount == 1) {
+            echo "In advisor if statement for password check";
+            if( password_verify('$input_password', $advisorRow['ADVpassword']) ){
+                $_SESSION['users_name'] = $advisorRow['ADVfirst_name'];
+                $_SESSION['logged_in'] = true;
+                $_SESSION['status'] = "advisor";
+                //Admin was successful in logging in
                 header("Location: advisor.php");
             }
             else{
-                error_reporting(0);
-                $errorMsg = "<div class='displayError'>*Password is incorrect. <br/></div>";
+                $_SESSION['error'] = 1;
             }
-        } elseif ($searchAdmin > 0) {
+        }
+        /*
+        elseif ($searchAdmin == 1) {
             if( password_verify('$input_password', $adminRow['password']) ){
                 $_SESSION["user"] = $input_email;
                 $_SESSION["logged_in"] = true;
@@ -65,12 +79,11 @@ if ( !empty($_POST) ){
                 header("Location: admin.php");
             }
             else{
-                error_reporting(0);
-                $errorMsg = "<div class='displayError'>*Password is incorrect. <br/></div>";
+                $_SESSION['error'] = 1;
             }
-        }else {
-            error_reporting(0);
-            $errorMsg = "<div class='displayError'>*User does not exist. Please try again. <br/></div>";
+        } */
+        else {
+            $_SESSION['user-nonexistent'] = 1;
         }
     }
 }
@@ -101,13 +114,21 @@ if ( !empty($_POST) ){
 
     <div class="w3-container">
         <form action="" method="post">
-            <input type="text" id="email" name="email" placeholder="E-mail (e.g., domain\name" >
+            <input type="text" id="email" name="email" placeholder="Username (e.g., domain\name)" >
             <input type="password" id="pswd" name="pswd" placeholder="Password" >
 
             <div>
                 <button class="sub-btn sub-btn-medium" type="submit" name="submit">Log in</button>
             </div>
 
+                <?php
+                if( $_SESSION['error'] == 1){
+                    echo "<h3 class='error' style='color: red'>Incorrect username/password</h3>";
+                }
+                if( $_SESSION['user-nonexistent'] == 1){
+                    echo "<h3 class='error' style='color: red'>User does not exist</h3>";
+                }
+                ?>
         </form>
 
     </div>
