@@ -48,17 +48,4 @@ class DatabaseConnector
         }
         return $connection;
     }
-
-    public function docker_compose_connect()
-    {
-        $dockerComposeHost = "mysqlDB";
-        $databaseURL = getenv("MYSQL_HOST");
-        $connection = new mysqli($dockerComposeHost, "root", "password", $dockerComposeHost);
-        if ($connection->connect_error) {
-            die("Failed to connect to Docker Compose Instance");
-        }
-        return $connection;
-    }
-
-
 }

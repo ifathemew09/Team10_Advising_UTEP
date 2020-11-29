@@ -36,28 +36,15 @@ if ($_SESSION["logged_in"] != true) {
 
 <div class="top-nav">
     <a href="../sign_out.php">Sign out</a>
-    <a href="advisor_schedule.php">Schedule</a>
+    <a class="active" href="advisor_schedule.php">Schedule</a>
     <a href="advisor_studentlist.php">Student List</a>
     <a href="advisor_calendar.php">Calendar</a>
-    <a class="active" href="advisor.php">Home</a>
+    <a href="advisor.php">Home</a>
 </div>
 
 <!-- ---------- MAIN BODY CONTAINER OF PAGE ---------- -->
 <div class="main-container">
-    <p>Welcome <?php echo("{$_SESSION['users_name']}");?>,<br></p>
-
-    <a href="appt_message.php">
-        <img class="first-div" alt="schedule_appt" src="../pictures/get_advised_img.png">
-    </a>
-
-    <a href="student_profile.php">
-        <img class="second-div" alt="schedule_appt" src="../pictures/profile_details_img.png">
-    </a>
-
-    <a href="student_schedule.php">
-        <img class="third-div" alt="schedule_appt" src="../pictures/availability_image.png">
-    </a>
-
+    <p>Welcome to your schedule! It can be seen down below. <br></p>
 
 </div>
 

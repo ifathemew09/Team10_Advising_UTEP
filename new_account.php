@@ -34,7 +34,7 @@ HERE;
 //First Name
 $input_firstName = $cleanse->cleanInput($_POST["fname"]);
 //Middle Name
-$input_middleName = isset($_POST["mName"]) ? $_POST["mname"]:"N/A";
+$input_middleName = $cleanse->cleanInput($_POST["mname"]);
 //Last Name
 $input_lastName  = $cleanse->cleanInput($_POST["lname"]);
 //ID
@@ -42,14 +42,14 @@ $input_id = $cleanse->cleanInput($_POST["id"]);
 //e-mail
 $input_email  = $cleanse->cleanInput($_POST["email"]);
 //password
-$input_password  = $cleanse->cleanInput($_POST["pswd"]);
+$input_password  = $_POST["pswd"];
 //Faculty/Staff or Student
 $input_title  = $cleanse->cleanInput($_POST["user-title"]);
 //Student Classification
 $input_classification = $cleanse->cleanInput($_POST['s-classification']);
 
-//Hashed password using PHP Salt
-$hashed_password = password_hash('$input_password', PASSWORD_DEFAULT); //SALT AND HASH SHA256
+//Hashed password using PHP Salt --- Hashes using CRYPT_BLOWFISH algorithm
+$hashed_password = password_hash($input_password, PASSWORD_BCRYPT);
 
 $submitBtn = $_POST["submit"];
 
@@ -59,22 +59,24 @@ if( isset($submitBtn) ){
     $sql = "";
     //Attempt insertion into query based on title
     if( trim($input_title) == "admin"){
-        $sql = "INSERT INTO admin (admin_id,first_name,middle_name,last_name,admin_password) VALUES ();";
+        echo "inside admin";
+        $sql = "INSERT INTO admin (ADMadmin_ID, ADMfirst_name, ADMmiddle_name, ADMlast_name,ADMemail_address, ADMpassword) VALUES ($input_id, '$input_firstName','$input_middleName','$input_lastName','$input_email','$hashed_password');";
         if( !mysqli_query($conn,$sql) ){
             $_SESSION['error'] = 1;
         }
 
     }
     else if( trim($input_title) == "advisor"){
-        $sql = "INSERT INTO advisor (advisor_,first_name,middle_name,last_name,admin_password) VALUES ();";
+        echo "inside advisor<br>";
+        $sql = "INSERT INTO advisor (ADVadvisor_ID, ADVfirst_name, ADVmiddle_name, ADVlast_name, ADVemail_address, ADVpassword) VALUES ($input_id, '$input_firstName','$input_middleName','$input_lastName','$input_email','$hashed_password');";
         if( !mysqli_query($conn,$sql) ){
             $_SESSION['error'] = 1;
         }
+        echo "success";
 
     }
     else if( trim($input_title) == "student"){
-        $sql = "INSERT INTO student (Sstudent_id,Sfirst_name,Smiddle_name,Slast_name,Semail,Spassword, Sclassification) 
-VALUES ($input_id,'$input_firstName','$input_middleName','$input_lastName','$input_email','$hashed_password','$input_classification');";
+        $sql = "INSERT INTO student (Sstudent_id,Sfirst_name,Smiddle_name,Slast_name,Semail,Spassword, Sclassification) VALUES ($input_id,'$input_firstName','$input_middleName','$input_lastName','$input_email','$hashed_password','$input_classification');";
         if( !mysqli_query($conn,$sql) ){
             $_SESSION['error'] = 1;
         }
@@ -132,7 +134,7 @@ VALUES ($input_id,'$input_firstName','$input_middleName','$input_lastName','$inp
 
             <!-- SELECT IF THE PERSON IS AN ADMIN, ADVISOR, OR A STUDENT-->
             <label for="user-title"><b>Select Title</b></label>
-            <select class="w3-select w3-border" name="user-title">
+            <select class="w3-select w3-border" name="user-title" required>
                 <option selected disabled>Title</option>
                 <option value="admin">ADMINISTRATOR</option>
                 <option value="advisor">ADVISOR</option>

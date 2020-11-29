@@ -10,8 +10,31 @@ if ($_SESSION["logged_in"] != true) {
     echo("<h1>Access denied!</h1>");
     exit();
 }
-?>
 
+$session_advisor_ID = $_SESSION['advisor-id'];
+//Select current advisors list of students
+$sql = "SELECT * FROM student WHERE ADVadvisor_ID = $session_advisor_ID";
+$result = mysqli_query($conn,$sql);
+
+_header();
+
+while( $row = mysqli_fetch_array($result) ){
+    //Is Scheduled Value to show in table for user
+    $isStudentScheduled = false;
+
+    //If student is scheduled and their column value is 1, then they do have an appointment with the advisor
+    if( $row['Sis_scheduled'] == 1 ){ $isStudentScheduled = true; }
+
+    //$row['column_name']
+    echo "<tr><td>" . $row['Sfirst_name'] . "</td><td>" . $row['Smiddle_name'] . "</td><td>" . $row['Slast_name']
+        . "</td><td>" . $row['Sstudent_ID'] . "</td><td>" . $row['Sis_scheduled'] . "</td><td> <button class='btn btn1'>Edit</button> </td><tr>";
+}
+
+
+_end_file();
+
+function _header(){
+    print<<<HERE
 <html>
 <head>
     <title>UTEP ADVISING</title>
@@ -37,26 +60,30 @@ if ($_SESSION["logged_in"] != true) {
 <div class="top-nav">
     <a href="../sign_out.php">Sign out</a>
     <a href="advisor_schedule.php">Schedule</a>
-    <a href="advisor_studentlist.php">Student List</a>
+    <a class="active" href="advisor_studentlist.php">Student List</a>
     <a href="advisor_calendar.php">Calendar</a>
-    <a class="active" href="advisor.php">Home</a>
+    <a href="advisor.php">Home</a>
 </div>
 
 <!-- ---------- MAIN BODY CONTAINER OF PAGE ---------- -->
 <div class="main-container">
-    <p>Welcome <?php echo("{$_SESSION['users_name']}");?>,<br></p>
+    <table id="advisingForm">
+        <caption><b>STUDENT LIST</b></caption>
+        <tr>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>Student ID</th>
+            <th>Student Scheduled</th>
+            <th>Advising Form</th>
+        </tr>
+HERE;
 
-    <a href="appt_message.php">
-        <img class="first-div" alt="schedule_appt" src="../pictures/get_advised_img.png">
-    </a>
+}
 
-    <a href="student_profile.php">
-        <img class="second-div" alt="schedule_appt" src="../pictures/profile_details_img.png">
-    </a>
-
-    <a href="student_schedule.php">
-        <img class="third-div" alt="schedule_appt" src="../pictures/availability_image.png">
-    </a>
+function _end_file(){
+    print<<<HERE
+    </table>
 
 
 </div>
@@ -75,3 +102,7 @@ if ($_SESSION["logged_in"] != true) {
 </body>
 
 </html>
+HERE;
+}
+
+?>

@@ -19,7 +19,7 @@ if ( !empty($_POST) ){
         //SQL Commands to get information from database
         $studentSQL = "SELECT * FROM student WHERE Semail LIKE '$input_email'";
         $advisorSQL = "SELECT * FROM advisor WHERE ADVemail_address LIKE '$input_email'";
-        $adminSQL   = "SELECT * FROM admin WHERE Aemail_address LIKE '$input_email'";
+        //$adminSQL   = "SELECT * FROM admin WHERE Aemail_address LIKE '$input_email'";
 
         //SELECT the UNIQUE username found in the database
         $studentResult = mysqli_query($conn, $studentSQL);
@@ -36,16 +36,10 @@ if ( !empty($_POST) ){
         $advisorCount = mysqli_num_rows($advisorResult);
         //$adminCount = mysqli_num_rows($adminResult);
 
-
-        /* ------------------ DEBUG ------------------ */
-        echo "<br>Username: " . $input_email . "\tDatabase Username: " . $studentRow['Semail'];
-        echo "<br>Password: " . $input_password . "\tDatabase Password: " . $studentRow['Spassword'];
-        echo "<br>Password verified? " . password_verify('$input_password', $studentRow['Spassword']);
-
         // LOGIN BASED ON USERS ACCESS TYPE
         if ($studentCount == 1 ) {
-
-            if( password_verify('$input_password', $studentRow['Spassword']) ){
+            $hashed_pswd = $studentRow['Spassword'];
+            if( password_verify($input_password, $hashed_pswd) ){
                 $_SESSION['users_name'] = $studentRow['Sfirst_name'];
                 $_SESSION['logged_in'] = true;
                 $_SESSION['status'] = "student";
@@ -56,14 +50,16 @@ if ( !empty($_POST) ){
             else{
                 $_SESSION['error'] = 1;
             }
-        } elseif ($advisorCount == 1) {
-            echo "In advisor if statement for password check";
-            if( password_verify('$input_password', $advisorRow['ADVpassword']) ){
+        }
+        elseif ($advisorCount == 1) {
+            $hashed_pswd = $advisorRow['ADVpassword'];
+            if( password_verify($input_password, $advisorRow['ADVpassword']) ){
                 $_SESSION['users_name'] = $advisorRow['ADVfirst_name'];
                 $_SESSION['logged_in'] = true;
                 $_SESSION['status'] = "advisor";
+                $_SESSION['advisor-id'] = $advisorRow['ADVadvisor_ID'];
                 //Admin was successful in logging in
-                header("Location: advisor.php");
+                header("Location: advisor_files/advisor.php");
             }
             else{
                 $_SESSION['error'] = 1;
@@ -71,7 +67,7 @@ if ( !empty($_POST) ){
         }
         /*
         elseif ($searchAdmin == 1) {
-            if( password_verify('$input_password', $adminRow['password']) ){
+            if( password_verify($input_password, $adminRow['ADMpassword']) ){
                 $_SESSION["user"] = $input_email;
                 $_SESSION["logged_in"] = true;
                 $_SESSION["status"] = "admin";
