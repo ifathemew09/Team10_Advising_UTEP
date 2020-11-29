@@ -9,9 +9,10 @@ $conn = $databaseConnector->connect();
 if ($_SESSION["logged_in"] != true) {
     echo("<h1>Access denied!</h1>");
     exit();
-}
-?>
+}//END if
 
+function _mainCode(){
+    print<<<HERE
 <html>
 <head>
     <title>UTEP ADVISING</title>
@@ -44,8 +45,24 @@ if ($_SESSION["logged_in"] != true) {
 
 <!-- ---------- MAIN BODY CONTAINER OF PAGE ---------- -->
 <div class="main-container">
-    <p>Welcome to your schedule! It can be seen down below. <br></p>
+    <p>Your appointments are listed below: <br></p>
+    <table id="advisingForm">
+        <caption><b>SCHEDULED APPOINTMENTS</b></caption>
+        <tr>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>Student ID</th>
+            <th>Meeting Time</th>
+            <th>Approved/Waiting</th>
+        </tr>
+HERE;
 
+}//end mainCode
+
+function _endFile(){
+    print<<<HERE
+    </table>
 </div>
 
 
@@ -62,3 +79,40 @@ if ($_SESSION["logged_in"] != true) {
 </body>
 
 </html>
+
+HERE;
+
+}//end _endFile
+
+_mainCode();
+
+$session_advisorID = $_SESSION['advisor-id'];
+//Select current advisors list of students
+$sql = "SELECT * FROM approved_meetings WHERE ADVadvisor_ID = $session_advisorID";
+$result = mysqli_query($conn,$sql);
+
+/* LIST OF APPROVED STUDENTS */
+while( $row = mysqli_fetch_array($result) ){
+    $isApproved = "WAITING";
+    //Store current student ID in the list of approved meetings
+    $studentID = $row['Sstudent_ID'];
+    //Command to search for student in table
+    $studentSQL = "SELECT * FROM student WHERE Sstudent_ID = $studentID";
+    //Find this ID in the table
+    $studentResult = mysqli_query($conn,$studentSQL);
+    //Store all row information in an array
+    $studentRow = mysqli_fetch_array($studentResult);
+
+    //Approved or waiting
+    if( $row['admin_approval'] == 1 ){
+        $isApproved = "APPROVED";
+    }
+
+    //$row['column_name']
+    echo "<tr><td>" . $studentRow['Sfirst_name'] . "</td><td>" . $studentRow['Smiddle_name'] . "</td><td>" . $studentRow['Slast_name']
+        . "</td><td>" . $row['Sstudent_ID'] . "</td><td>" . $row['meeting_time'] . "</td><td>" . $isApproved . "</td><tr>";
+
+}//end while
+
+_endFile();
+?>

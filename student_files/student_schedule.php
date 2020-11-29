@@ -10,6 +10,33 @@ if ($_SESSION["logged_in"] != true) {
     echo("<h1>Access denied!</h1>");
     exit();
 }
+
+//Store ID of student
+$id = $_SESSION['id'];
+
+//Get advisor ID from student table
+$studentAdvisor = "SELECT ADVadvisor_ID FROM student WHERE Sstudent_ID = $id";
+$studentAdvisorID = mysqli_fetch_array(mysqli_query($conn,$studentAdvisor));
+
+//Get advisor name from advisor table
+$advisorQuery = "SELECT ADVfirst_name, ADVlast_name FROM advisor WHERE ADVadvisor_ID = $studentAdvisorID[0]";
+$advisorName = mysqli_fetch_array(mysqli_query($conn,$advisorQuery)); //USE
+
+/* ---------- IF STUDENT SUBMITS APPT REQUEST ----------*/
+if( isset($_POST['req']) ){
+    $datetimeAppt = $_POST['student-date'];
+    $insertDate = date("Y-m-d H:i:s", strtotime($datetimeAppt));
+
+    $insert_request = "INSERT INTO requested_meeting (ADVadvisor_ID,Sstudent_ID, meeting_time, time_of_request) VALUES($studentAdvisorID[0],$id,'$insertDate',NOW());";
+    echo "Date Time: " . $insertDate . "<br>Student's Advisor ID: " . $studentAdvisorID[0];
+
+    if( !mysqli_query($conn,$insert_request) ){
+        $_SESSION['request-error'] = 0;
+    } else{
+        $_SESSION['request-error'] = 1;
+    }
+}
+
 ?>
 
 <html>
@@ -44,27 +71,20 @@ if ($_SESSION["logged_in"] != true) {
 
 <!-- ---------- MAIN BODY CONTAINER OF PAGE ---------- -->
 <div class="main-container">
-    <p>Your advisor is [advisor]. The following times are available to schedule with your advisor. Please select the times you are available for advising. </p>
-    <form action ="">
-        <input type="checkbox" id="moct12" name="moct12" value="mon">
-        <label for="vehicle1">Monday, October 12</label><br>
+    <p>Your advisor is <b><?php echo($advisorName[0] . " " . $advisorName[1]);?></b>. Please request a date and time you are available for advising. </p>
+    <form action ="" method="post">
+        <input type="datetime-local" id="student-date" name="student-date" >
 
-        <input type="checkbox" id="toct13" name="toct13" value="tues">
-        <label for="vehicle1">Tuesday, October 13</label><br>
+        <br>
 
-        <input type="checkbox" id="woct14" name="woct14" value="wed">
-        <label for="vehicle1">Wednesday, October 14</label><br>
-
-        <input type="checkbox" id="roct15" name="roct15" value="thur">
-        <label for="vehicle1">Thursday, October 15</label><br>
-
-        <input type="checkbox" id="foct16" name="foct16" value="fri">
-        <label for="vehicle1">Friday, October 16</label><br>
-
-        <input type="button" value="Request" class="btn btn1">
+        <input style="position: absolute" type="submit" value="Request" class="btn btn1" name="req">
 
     </form>
-
+    <?php
+    if( $_SESSION['request-error'] == 1){
+        echo "<h4 class='error' style='color: green'><br><br><br>Request has been sent.</h4>";
+    }
+    ?>
 
 
 

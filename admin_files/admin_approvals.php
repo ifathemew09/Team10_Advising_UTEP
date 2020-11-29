@@ -36,14 +36,14 @@ if ($_SESSION["logged_in"] != true) {
 
 <div class="top-nav">
     <a href="../sign_out.php">Sign out</a>
-    <a href="admin_approvals.php">Waiting Approvals</a>
+    <a class="active" href="admin_approvals.php">Waiting Approvals</a>
     <a href="admin_appts.php">Appointments</a>
-    <a class="active" href="admin.php">Home</a>
+    <a href="admin.php">Home</a>
 </div>
 
 <!-- ---------- MAIN BODY CONTAINER OF PAGE ---------- -->
 <div class="main-container">
-    <p>Welcome <?php echo("{$_SESSION['users-name']}");?>,<br></p>
+
 
 
 

@@ -293,27 +293,28 @@ article {
 }
 
 
-/* -------- ADVISING FORM TABLE -------- */
+/* -------- ADMIN APPROVED APPOINTMENT TABLE -------- */
 
-#advisingForm {
+#apptTable {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
-#advisingForm td, #advisingForm th {
+#apptTable td, #apptTable th {
     border: 2px solid #041E42;
     padding: 8px;
 }
 
-#advisingForm tr:hover {background-color: #fff;}
+#apptTable tr:hover {background-color: #fff;}
 
-#advisingForm th {
+#apptTable th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
     background-color: #FF8200;
     color: black;
+    height: 50px;
 }
 
 /* ---------- INPUT TYPE ---------- */

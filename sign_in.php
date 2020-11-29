@@ -19,22 +19,22 @@ if ( !empty($_POST) ){
         //SQL Commands to get information from database
         $studentSQL = "SELECT * FROM student WHERE Semail LIKE '$input_email'";
         $advisorSQL = "SELECT * FROM advisor WHERE ADVemail_address LIKE '$input_email'";
-        //$adminSQL   = "SELECT * FROM admin WHERE Aemail_address LIKE '$input_email'";
+        $adminSQL   = "SELECT * FROM admin WHERE ADMemail_address LIKE '$input_email'";
 
         //SELECT the UNIQUE username found in the database
         $studentResult = mysqli_query($conn, $studentSQL);
         $advisorResult = mysqli_query($conn, $advisorSQL);
-        //$adminResult = mysqli_query($conn, $adminSQL);
+        $adminResult = mysqli_query($conn, $adminSQL);
 
         //FETCH the array by association
         $studentRow = mysqli_fetch_array($studentResult,MYSQLI_ASSOC);
         $advisorRow = mysqli_fetch_array($advisorResult,MYSQLI_ASSOC);
-        //$adminRow = mysqli_fetch_array($adminResult,MYSQLI_ASSOC);
+        $adminRow = mysqli_fetch_array($adminResult,MYSQLI_ASSOC);
 
         //COUNT NUM OF ROWS/results found in the query for if statement
         $studentCount = mysqli_num_rows($studentResult);
         $advisorCount = mysqli_num_rows($advisorResult);
-        //$adminCount = mysqli_num_rows($adminResult);
+        $adminCount = mysqli_num_rows($adminResult);
 
         // LOGIN BASED ON USERS ACCESS TYPE
         if ($studentCount == 1 ) {
@@ -65,19 +65,19 @@ if ( !empty($_POST) ){
                 $_SESSION['error'] = 1;
             }
         }
-        /*
-        elseif ($searchAdmin == 1) {
+        elseif ($adminCount == 1) {
             if( password_verify($input_password, $adminRow['ADMpassword']) ){
-                $_SESSION["user"] = $input_email;
+                $_SESSION["users-name"] = $adminRow['ADMfirst_name'];
                 $_SESSION["logged_in"] = true;
                 $_SESSION["status"] = "admin";
+                $_SESSION['admin-id'] = $adminRow['ADMadmin_ID'];
                 //echo "Coordinator Found";
-                header("Location: admin.php");
+                header("Location: admin_files/admin.php");
             }
             else{
                 $_SESSION['error'] = 1;
             }
-        } */
+        }
         else {
             $_SESSION['user-nonexistent'] = 1;
         }
