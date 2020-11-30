@@ -18,8 +18,9 @@ $_SESSION['reject-error'] = 0;
 /* -------- IF ADMIN DECIDES TO APPROVE/REJECT THE APPOINTMENT REQUEST OF THE STUDENT -------- */
 if( isset($_GET['Sid-approved']) ){
     $idOfStudent = intval($_GET['Sid-approved']);
+    $idOfAdmin = $_SESSION['admin-id'];
     ////////////////////////
-    $updateReqMeeting = "UPDATE requested_meeting SET admin_approval = 1 WHERE Sstudent_ID = $idOfStudent";
+    $updateReqMeeting = "UPDATE requested_meeting SET admin_approval = 1, ADMadmin_ID = $idOfAdmin WHERE Sstudent_ID = $idOfStudent";
     $updateStudent = "UPDATE student SET Sis_scheduled = 1 WHERE Sstudent_ID = $idOfStudent";
     $resultReq  = mysqli_query($conn, $updateReqMeeting);
     $resultStat = mysqli_query($conn, $updateStudent);

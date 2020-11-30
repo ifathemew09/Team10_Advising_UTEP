@@ -28,7 +28,6 @@ if( isset($_POST['req']) ){
     $insertDate = date("Y-m-d H:i:s", strtotime($datetimeAppt));
 
     $insert_request = "INSERT INTO requested_meeting (ADVadvisor_ID,Sstudent_ID, meeting_time, time_of_request) VALUES($studentAdvisorID[0],$id,'$insertDate',NOW());";
-    echo "Date Time: " . $insertDate . "<br>Student's Advisor ID: " . $studentAdvisorID[0];
 
     if( !mysqli_query($conn,$insert_request) ){
         $_SESSION['request-error'] = 0;

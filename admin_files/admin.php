@@ -45,6 +45,15 @@ if ($_SESSION["logged_in"] != true) {
 <div class="main-container">
     <p>Welcome <?php echo("{$_SESSION['users-name']}");?>,<br></p>
 
+    <a href="admin_approvals.php">
+        <img class="first-div" alt="schedule_appt" src="../pictures/admin_approval.png">
+    </a>
+
+    <img class="second-div" alt="schedule_appt" src="../pictures/admin_icon.png">
+
+    <a href="admin_appts.php">
+        <img class="third-div" alt="schedule_appt" src="../pictures/admin_appt.png">
+    </a>
 
 
 </div>
