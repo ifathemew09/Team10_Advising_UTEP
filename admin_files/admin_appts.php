@@ -16,7 +16,7 @@ if ($_SESSION["logged_in"] != true) {
 _beginFile();
 
 //Select current advisors list of students
-$sql = "SELECT * FROM approved_meetings ORDER BY meeting_time ASC";
+$sql = "SELECT * FROM approved_meetings";
 $result = mysqli_query($conn,$sql);
 
 /* LIST OF APPROVED STUDENTS */

@@ -19,15 +19,13 @@ $result = mysqli_query($conn,$sql);
 _header();
 
 while( $row = mysqli_fetch_array($result) ){
-    //Is Scheduled Value to show in table for user
-    $isStudentScheduled = false;
-
     //If student is scheduled and their column value is 1, then they do have an appointment with the advisor
-    if( $row['Sis_scheduled'] == 1 ){ $isStudentScheduled = true; }
+    if( $row['Sis_scheduled'] == 1 ){ $isStudentScheduled = "Yes"; }
+    else{ $isStudentScheduled = "No"; }
 
     //$row['column_name']
     echo "<tr><td>" . $row['Sfirst_name'] . "</td><td>" . $row['Smiddle_name'] . "</td><td>" . $row['Slast_name']
-        . "</td><td>" . $row['Sstudent_ID'] . "</td><td>" . $row['Sis_scheduled'] . "</td><td> <button class='btn btn1'>Edit</button> </td><tr>";
+        . "</td><td>" . $row['Sstudent_ID'] . "</td><td>" . $isStudentScheduled . "</td><td> <button class='btn btn1'>Edit</button> </td><tr>";
 }
 
 
@@ -61,7 +59,6 @@ function _header(){
     <a href="../sign_out.php">Sign out</a>
     <a href="advisor_schedule.php">Schedule</a>
     <a class="active" href="advisor_studentlist.php">Student List</a>
-    <a href="advisor_calendar.php">Calendar</a>
     <a href="advisor.php">Home</a>
 </div>
 

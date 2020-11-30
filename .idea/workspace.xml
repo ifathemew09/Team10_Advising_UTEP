@@ -19,9 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="010b7873-71c4-447a-87ba-280b9906b612" name="Default Changelist" comment="advisor appointment list ready">
+    <list default="true" id="010b7873-71c4-447a-87ba-280b9906b612" name="Default Changelist" comment="advisor approval/rejection of appt working">
+      <change afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin_files/admin_approvals.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_files/admin_approvals.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_files/admin_appts.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_files/admin_appts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/advisor_files/advisor.php" beforeDir="false" afterPath="$PROJECT_DIR$/advisor_files/advisor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/advisor_files/advisor_schedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/advisor_files/advisor_schedule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/advisor_files/advisor_studentlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/advisor_files/advisor_studentlist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sign_in.php" beforeDir="false" afterPath="$PROJECT_DIR$/sign_in.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +94,8 @@
       <workItem from="1606247071579" duration="2100000" />
       <workItem from="1606281002385" duration="2193000" />
       <workItem from="1606608347311" duration="22594000" />
-      <workItem from="1606679743388" duration="19887000" />
+      <workItem from="1606679743388" duration="23629000" />
+      <workItem from="1606719647259" duration="799000" />
     </task>
     <task id="LOCAL-00001" summary="sign-in page style changes">
       <created>1605046951283</created>
@@ -153,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606694041345</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="advisor approval/rejection of appt working">
+      <created>1606710013017</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1606710013017</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,7 +195,8 @@
     <MESSAGE value="sessions are in play in the student files" />
     <MESSAGE value="advisor pages ready" />
     <MESSAGE value="advisor appointment list ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="advisor appointment list ready" />
+    <MESSAGE value="advisor approval/rejection of appt working" />
+    <option name="LAST_COMMIT_MESSAGE" value="advisor approval/rejection of appt working" />
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1606620552780">
@@ -196,13 +211,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="225" key="Github.UntrackedFilesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605035701316" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1606685953351">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1126" y="443" key="NewPhpFileDialog" timestamp="1606710189524">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="-1126" y="443" key="NewPhpFileDialog/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1606710189524" />
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1606685953351" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606694045303">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1368" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606710016892">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="-1368" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1606710016892" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1606694045303" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1605135521862">
       <screen x="0" y="0" width="1920" height="1040" />

@@ -39,7 +39,6 @@ function _mainCode(){
     <a href="../sign_out.php">Sign out</a>
     <a class="active" href="advisor_schedule.php">Schedule</a>
     <a href="advisor_studentlist.php">Student List</a>
-    <a href="advisor_calendar.php">Calendar</a>
     <a href="advisor.php">Home</a>
 </div>
 
@@ -54,7 +53,6 @@ function _mainCode(){
             <th>Last Name</th>
             <th>Student ID</th>
             <th>Meeting Time</th>
-            <th>Approved/Waiting</th>
         </tr>
 HERE;
 
@@ -103,14 +101,9 @@ while( $row = mysqli_fetch_array($result) ){
     //Store all row information in an array
     $studentRow = mysqli_fetch_array($studentResult);
 
-    //Approved or waiting
-    if( $row['admin_approval'] == 1 ){
-        $isApproved = "APPROVED";
-    }
-
     //$row['column_name']
     echo "<tr><td>" . $studentRow['Sfirst_name'] . "</td><td>" . $studentRow['Smiddle_name'] . "</td><td>" . $studentRow['Slast_name']
-        . "</td><td>" . $row['Sstudent_ID'] . "</td><td>" . $row['meeting_time'] . "</td><td>" . $isApproved . "</td><tr>";
+        . "</td><td>" . $row['Sstudent_ID'] . "</td><td>" . $row['meeting_time'] . "</td><tr>";
 
 }//end while
 

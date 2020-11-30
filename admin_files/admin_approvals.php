@@ -47,7 +47,7 @@ if( isset($_GET['Sid-rejected']) ){
 _startOfFile();
 
 //Select current advisors list of students
-$sql = "SELECT * FROM needs_approval ORDER BY meeting_time ASC";
+$sql = "SELECT * FROM meetings_yet_approved";
 $result = mysqli_query($conn,$sql);
 
 $adminID = $_SESSION['admin-id'];
@@ -68,8 +68,6 @@ while( $row = mysqli_fetch_array($result) ){
 
     echo "<tr><td>" . $studentName[0] . " " . $studentName[1] . " " . $studentName[2] . "</td>"
         . "<td>" . $advisorName[0] . " " . $advisorName[1] . " " . $advisorName[2] . "</td>"
-        . "<td>" . date("Y-m-d",strtotime($row['time_of_request'])) . "</td>"
-        . "<td>" . date("g:i a",strtotime($row['time_of_request'])) . "</td>"
         . "<td>" . date("Y-m-d",strtotime($row['meeting_time'])) . "</td>"
         . "<td>" . date("g:i a",strtotime($row['meeting_time'])) . "</td>"
         . "<td> <button onclick='addurl(this)' class='btn btn1' id='$studentName[3]' type='submit'>Approve</button> <button onclick='rejecturl(this)' class='btn btn1' id='$studentName[3]' type='submit'>Reject</button> </td><tr>";
@@ -130,11 +128,10 @@ function _startOfFile(){
 <!-- ---------- MAIN BODY CONTAINER OF PAGE ---------- -->
 <div class="main-container">
     <table id="apptTable">
-        <caption><b>APPROVED APPOINTMENTS</b></caption>
+        <caption><b>NEEDS ATTENTION</b></caption>
         <tr>
             <th>Student</th>
             <th>Advisor</th>
-            <th colspan="2">Time of Request</th>
             <th colspan="2">Meeting Time</th>
             <th colspan="2">Approve/Reject</th>
         </tr>

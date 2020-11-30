@@ -110,7 +110,7 @@ if ( !empty($_POST) ){
 
     <div class="w3-container">
         <form action="" method="post">
-            <input type="text" id="email" name="email" placeholder="Username (e.g., domain\name)" >
+            <input type="text" id="email" name="email" placeholder="email (i.e. user@miners.utep.edu)" >
             <input type="password" id="pswd" name="pswd" placeholder="Password" >
 
             <div>
