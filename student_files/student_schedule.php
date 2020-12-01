@@ -11,8 +11,12 @@ if ($_SESSION["logged_in"] != true) {
     exit();
 }
 
+
 //Store ID of student
 $id = $_SESSION['id'];
+//Store cancellation error if any
+$_SESSION['reject-error'] = 0;
+$_SESSION['cancel-msg'] = 0;
 
 //Get advisor ID from student table
 $studentAdvisor = "SELECT ADVadvisor_ID FROM student WHERE Sstudent_ID = $id";
@@ -99,6 +103,17 @@ function _showAppointmentInfo($db, $studentID, $advName){
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="../style_sheets/student_style.css">
+    
+    <script>
+        function del(elem){
+            var id = elem.id;
+            //window.location.href = "admin_approvals.php?id=elem.id";
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('cancelled', id);
+            window.location.search = urlParams;
+        }//end function
+        
+    </script>
 </head>
 
 <body>
@@ -130,6 +145,7 @@ function _showAppointmentInfo($db, $studentID, $advName){
         <tr>
             <th>Advisor</th>
             <th colspan="2">Meeting Time</th>
+            <th>Cancel Appt.</th>
         </tr>
 HERE;
 
@@ -140,11 +156,28 @@ HERE;
     /* TABLE OF APPOINTMENT DETAILS */
     echo "<tr><td>" . $advName[0] . " " . $advName[1]
         . "</td><td>" . date("Y-m-d",strtotime($result[0])) . "</td>"
-        . "<td>" . date("g:i a",strtotime($result[0])) . "</td></tr>";
-
+        . "<td>" . date("g:i a",strtotime($result[0])) . "</td><td>"
+        . "<button onclick='del(this)' class='btn btn1' id='$studentID' type='submit'>Cancel</button> </td></tr>";
 
     print<<<HERE
-    </table>    
+    </table>
+    <br> 
+HERE;
+
+    /* Display error if system is unable to cancel appointment. */
+    if( isset($_SESSION['reject-error'])){
+        if( $_SESSION['reject-error'] == 1 ){
+            echo "<h3 style='color: red'>There was a problem in cancelling your appointment. Contact your advisor</h3>";
+        }
+    }
+
+    if( isset($_SESSION['cancel-msg'])){
+        if( $_SESSION['cancel-msg'] == 1 ){
+            echo "<h3 style='color: green'><b>Your appointment was cancelled.</b></h3>";
+        }
+    }
+
+    print<<<HERE
 </div>
 
 
@@ -163,6 +196,21 @@ HERE;
 </html>
 HERE;
 
+    if( isset($_GET['cancelled']) ) {
+        $idOfStudent = intval($_GET['cancelled']);
+        ////////////////////////
+        $deleteRequest = "DELETE FROM approved_meetings WHERE Sstudent_ID = $idOfStudent";
+        $changeStatus = "UPDATE student SET Sis_scheduled = 0 WHERE Sstudent_ID = $idOfStudent";
+
+        $resultDel = mysqli_query($db,$deleteRequest);
+        $resultStu = mysqli_query($db, $changeStatus);
+        ///////////////////////
+        if( !$resultDel || !$resultStu){
+            $_SESSION['reject-error'] = 1;
+        }
+
+        $_SESSION['cancel-msg'] = 1;
+    }
 
 }//end function
 

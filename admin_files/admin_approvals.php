@@ -144,11 +144,16 @@ function _endOfFile(){
     print<<<HERE
     </table>
 HERE;
-    if( $_SESSION['approve-error'] == 1 ){
-        echo "<h3 style='color: red'>There was a problem in accepting the students appointment request</h3>";
+    if(isset($_SESSION['approve-error'])){
+        if( $_SESSION['approve-error'] == 1 ){
+            echo "<h3 style='color: red'>There was a problem in accepting the students appointment request</h3>";
+        }
     }
-    if( $_SESSION['reject-error'] == 1 ){
-        echo "<h3 style='color: red'>There was a problem in rejecting the students appointment request.</h3>";
+
+    if( isset($_SESSION['reject-error'])){
+        if( $_SESSION['reject-error'] == 1 ){
+            echo "<h3 style='color: red'>There was a problem in rejecting the students appointment request.</h3>";
+        }
     }
     print<<<HERE
 </div>
