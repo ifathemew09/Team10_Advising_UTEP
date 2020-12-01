@@ -9,7 +9,7 @@ $databaseConnector = new DatabaseConnector();
 $conn = $databaseConnector->connect();
 
 if ($_SESSION["logged_in"] != true) {
-    echo("<h1>Access denied!</h1>");
+    echo("<h1>Access denied! You are not allowed to view this page.</h1>");
     exit();
 }
 

@@ -46,7 +46,7 @@ if ($_SESSION["logged_in"] != true) {
 <div class="main-container">
     <p>Welcome <?php echo("{$_SESSION['users_name']}");?>,<br></p>
 
-        <a href="appt_message.php">
+        <a href="student_schedule.php">
             <img class="first-div" alt="schedule_appt" src="../pictures/get_advised_img.png">
         </a>
 

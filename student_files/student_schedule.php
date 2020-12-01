@@ -22,22 +22,20 @@ $studentAdvisorID = mysqli_fetch_array(mysqli_query($conn,$studentAdvisor));
 $advisorQuery = "SELECT ADVfirst_name, ADVlast_name FROM advisor WHERE ADVadvisor_ID = $studentAdvisorID[0]";
 $advisorName = mysqli_fetch_array(mysqli_query($conn,$advisorQuery)); //USE
 
-/* ---------- IF STUDENT SUBMITS APPT REQUEST ----------*/
-if( isset($_POST['req']) ){
-    $datetimeAppt = $_POST['student-date'];
-    $insertDate = date("Y-m-d H:i:s", strtotime($datetimeAppt));
+//Check if student is scheduled
+$isScheduledSQL = "SELECT Sis_scheduled FROM student WHERE Sstudent_ID = $id";
+$isScheduled = mysqli_fetch_array(mysqli_query($conn,$isScheduledSQL)); //USE
 
-    $insert_request = "INSERT INTO requested_meeting (ADVadvisor_ID,Sstudent_ID, meeting_time, time_of_request) VALUES($studentAdvisorID[0],$id,'$insertDate',NOW());";
-
-    if( !mysqli_query($conn,$insert_request) ){
-        $_SESSION['request-error'] = 0;
-    } else{
-        $_SESSION['request-error'] = 1;
-    }
+if(  $isScheduled[0] == 1){
+    //Show them their appointment
+    _showAppointmentInfo($conn, $id, $advisorName);
 }
-
-?>
-
+else if( $isScheduled[0] == 0 ){
+    //Show them the form to request
+    _showRequestForm($conn, $studentAdvisorID[0], $id, $advisorName);
+}
+else{
+    print<<<HERE
 <html>
 <head>
     <title>UTEP Miners Account</title>
@@ -70,23 +68,7 @@ if( isset($_POST['req']) ){
 
 <!-- ---------- MAIN BODY CONTAINER OF PAGE ---------- -->
 <div class="main-container">
-    <p>Your advisor is <b><?php echo($advisorName[0] . " " . $advisorName[1]);?></b>. Please request a date and time you are available for advising. </p>
-    <form action ="" method="post">
-        <input type="datetime-local" id="student-date" name="student-date" >
-
-        <br>
-
-        <input style="position: absolute" type="submit" value="Request" class="btn btn1" name="req">
-
-    </form>
-    <?php
-    if( $_SESSION['request-error'] == 1){
-        echo "<h4 class='error' style='color: green'><br><br><br>Request has been sent.</h4>";
-    }
-    ?>
-
-
-
+    <p>Awaiting approval...</p>
 </div>
 
 
@@ -103,3 +85,177 @@ if( isset($_POST['req']) ){
 </body>
 
 </html>
+HERE;
+
+}
+
+/* --------------- Function that displays page that shows appointment information of student if approved --------------- */
+function _showAppointmentInfo($db, $studentID, $advName){
+    print<<<HERE
+<html>
+<head>
+    <title>UTEP Miners Account</title>
+    <meta http-equiv="X-UA-Compatible" content=""IE="Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="../style_sheets/student_style.css">
+</head>
+
+<body>
+
+<!-- -------- TITLE BAR WITH UTEP LOGO -------- -->
+<div class="big-wrapper">
+    <img src="../pictures/box_logo_orange.PNG">
+
+    <div class="title-bar">
+        <h1>Computer Science Advising</h1>
+    </div>
+</div>
+
+<!-- -------- NAVIGATION BAR -------- -->
+
+<div class="top-nav">
+    <a href="../sign_out.php">Sign out</a>
+    <a class="active" href="student_schedule.php">Schedule</a>
+    <a href="student_documents.php">Documents</a>
+    <a href="student_profile.php">Profile</a>
+    <a href="student.php">Home</a>
+</div>
+
+<!-- ---------- MAIN BODY CONTAINER OF PAGE ---------- -->
+<div class="main-container">
+    <p style="color: green"><b>Your appointment has been approved.</b></p>
+    <table id="advisingForm">
+        <caption><b>Appointment Details</b></caption>
+        <tr>
+            <th>Advisor</th>
+            <th colspan="2">Meeting Time</th>
+        </tr>
+HERE;
+
+    //Select meeting information
+    $sql = "SELECT meeting_time FROM approved_meetings WHERE Sstudent_ID = $studentID";
+    $result = mysqli_fetch_array(mysqli_query($db,$sql)); //USE
+
+    /* TABLE OF APPOINTMENT DETAILS */
+    echo "<tr><td>" . $advName[0] . " " . $advName[1]
+        . "</td><td>" . date("Y-m-d",strtotime($result[0])) . "</td>"
+        . "<td>" . date("g:i a",strtotime($result[0])) . "</td></tr>";
+
+
+    print<<<HERE
+    </table>    
+</div>
+
+
+<!-- ---------- FOOTER ---------- -->
+<footer>
+    <div class="container">
+        <div class="footer-wrapper">
+            <h2>The University of Texas at El Paso</h2>
+            <p>The Computer Science Department</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>
+HERE;
+
+
+}//end function
+
+/* --------------- Function that displays form to request an appointment with their advisor --------------- */
+function _showRequestForm($db, $advID, $stuID, $advName){
+    /* IF STUDENT IS ALREADY SCHEDULED, SHOW THEM A TABLE OF THEIR INFORMATION */
+    print<<<HERE
+<html>
+<head>
+    <title>UTEP Miners Account</title>
+    <meta http-equiv="X-UA-Compatible" content=""IE="Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="../style_sheets/student_style.css">
+</head>
+
+<body>
+
+<!-- -------- TITLE BAR WITH UTEP LOGO -------- -->
+<div class="big-wrapper">
+    <img src="../pictures/box_logo_orange.PNG">
+
+    <div class="title-bar">
+        <h1>Computer Science Advising</h1>
+    </div>
+</div>
+
+<!-- -------- NAVIGATION BAR -------- -->
+
+<div class="top-nav">
+    <a href="../sign_out.php">Sign out</a>
+    <a class="active" href="student_schedule.php">Schedule</a>
+    <a href="student_documents.php">Documents</a>
+    <a href="student_profile.php">Profile</a>
+    <a href="student.php">Home</a>
+</div>
+
+<!-- ---------- MAIN BODY CONTAINER OF PAGE ---------- -->
+<div class="main-container">
+    <p>Your advisor is <b>
+HERE;
+    echo($advName[0] . " " . $advName[1]);
+    print<<<HERE
+    </b>. Please request a date and time you are available for advising. </p>
+<form action="" method="post">
+    <input type="datetime-local" id="student-date" name="student-date">
+
+    <br>
+
+    <input style="position: absolute" type="submit" value="Request" class="btn btn1" name="req">
+
+</form>
+<br>
+HERE;
+
+    if( isset($_SESSION['request-error']) ){
+        if( $_SESSION['request-error'] == 1){
+            echo "<h4 class='error' style='color: green'><br><br><br>Request has been sent.</h4>";
+        }
+    }
+
+    print<<<HERE
+</div>
+
+
+<!-- ---------- FOOTER ---------- -->
+<footer>
+    <div class="container">
+        <div class="footer-wrapper">
+            <h2>The University of Texas at El Paso</h2>
+            <p>The Computer Science Department</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>
+HERE;
+
+    /* ---------- IF STUDENT SUBMITS APPT REQUEST ----------*/
+    if( isset($_POST['req']) ){
+        $datetimeAppt = $_POST['student-date'];
+        $insertDate = date("Y-m-d H:i:s", strtotime($datetimeAppt));
+
+        $insert_request = "INSERT INTO requested_meeting (ADVadvisor_ID,Sstudent_ID, meeting_time, time_of_request) VALUES($advID,$stuID,'$insertDate',NOW());";
+
+        if( !mysqli_query($db,$insert_request) ){
+            $_SESSION['request-error'] = 0;
+        } else{
+            $_SESSION['request-error'] = 1;
+        }
+    }
+
+}//end request function
+

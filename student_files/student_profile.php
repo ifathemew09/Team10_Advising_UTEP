@@ -12,7 +12,7 @@ if ($_SESSION["logged_in"] != true) {
 } else{
     $studentID = $_SESSION['id'];
     //Search for student ID in student table
-    $studentSQL = "SELECT * FROM student WHERE Sstudent_ID LIKE $studentID ";
+    $studentSQL = "SELECT * FROM student WHERE Sstudent_ID LIKE $studentID";
     //SELECT the UNIQUE username found in the database
     $studentResult = mysqli_query($conn, $studentSQL);
     //FETCH the array by association

@@ -103,7 +103,7 @@ while( $row = mysqli_fetch_array($result) ){
 
     //$row['column_name']
     echo "<tr><td>" . $studentRow['Sfirst_name'] . "</td><td>" . $studentRow['Smiddle_name'] . "</td><td>" . $studentRow['Slast_name']
-        . "</td><td>" . $row['Sstudent_ID'] . "</td><td>" . $row['meeting_time'] . "</td><tr>";
+        . "</td><td>" . $row['Sstudent_ID'] . "</td><td>" . date("g:i a",strtotime($row['meeting_time'])) . "</td><tr>";
 
 }//end while
 
